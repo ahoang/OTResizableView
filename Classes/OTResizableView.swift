@@ -46,7 +46,7 @@ import UIKit
     
     @objc public weak var delegate: OTResizableViewDelegate?
     
-    @objc public var minimumWidth: CGFloat = 100 {
+    @objc public var minimumWidth: CGFloat = 10 {
         didSet {
             if keepAspectEnabled {
                 minimumWidth = oldValue
@@ -54,7 +54,7 @@ import UIKit
         }
     }
     
-    @objc public var minimumHeight: CGFloat = 100 {
+    @objc public var minimumHeight: CGFloat = 10 {
         didSet {
             if keepAspectEnabled {
                 minimumHeight = oldValue
@@ -101,7 +101,7 @@ import UIKit
     
     @objc public let gripPointDiameter: CGFloat = 10
     
-    @objc public private(set) var contentView = UIView()
+    @objc public private(set) var contentView = UITextView()
     
     @objc public private(set) var currentTappedPostion:TappedPosition = .None
     
@@ -119,7 +119,7 @@ import UIKit
     public var gripPointStrokeWidth:CGFloat = 2
     
     //MARK: - Initialize
-    public init(contentView: UIView) {
+    public init(contentView: UITextView) {
         super.init(frame: contentView.frame.insetBy(dx: -gripPointDiameter, dy: -gripPointDiameter))
         
         initialize()
@@ -175,7 +175,7 @@ import UIKit
     
     
     //MARK: - Set
-    private func setContentView(newContentView: UIView) {
+    private func setContentView(newContentView: UITextView) {
         contentView.removeFromSuperview()
         contentView = newContentView;
         contentView.frame.origin = CGPoint(x: gripPointDiameter, y: gripPointDiameter)
@@ -192,6 +192,14 @@ import UIKit
         contentView.setNeedsDisplay()
         gripPointView.frame = bounds
         gripPointView.setNeedsDisplay()
+        contentView.sizeToFit()
+        frame.size = contentView.bounds.insetBy(dx: -gripPointDiameter, dy: -gripPointDiameter).size
+        setNeedsDisplay()
+        gripPointView.frame = bounds
+        gripPointView.setNeedsDisplay()
+        contentView.center.x = bounds.midX
+        contentView.center.y = bounds.midY
+        print("content size: \(contentView.contentSize)")
     }
     
     
@@ -245,7 +253,7 @@ import UIKit
                         let differenceX = currentTouchPointInSuperview.x - touchStartPointInSuperview.x
                         let differenceY = currentTouchPointInSuperview.y - touchStartPointInSuperview.y
                         
-                        resizedRect = generateNormalFrame(position: currentTappedPostion, differenceX: differenceX, differenceY: differenceY)
+                        resizedRect = generateNormalFrame(position: currentTappedPostion, differenceX: differenceX, differenceY: 0)
                         resizedRect = adjustNormal(rect: resizedRect)
                     }
                     

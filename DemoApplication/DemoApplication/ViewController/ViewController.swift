@@ -12,17 +12,22 @@ import OTResizableView
 
 class ViewController: UIViewController,OTResizableViewDelegate {
 
-    var resizableView = OTResizableView(contentView: UIView())
+    var resizableView = OTResizableView(contentView: UITextView())
     
     @IBOutlet weak var mainView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let yourView = UIView(frame: CGRect(x: 70, y: 70, width: 200, height: 300))
-        yourView.backgroundColor = UIColor.blue
-        
+        let yourView = UITextView(frame: CGRect(x: 70, y: 70, width: 200, height: 0))
+        yourView.text = "HELLO THERE THIS IS A TEXTVIEW"
+        yourView.isEditable = false
+        yourView.isSelectable = false
+        yourView.isScrollEnabled = false
+        yourView.sizeToFit()
+        yourView.textAlignment = .center
         resizableView = OTResizableView(contentView: yourView)
+        resizableView.backgroundColor = .yellow
         resizableView.delegate = self;
         
         mainView.addSubview(resizableView)
@@ -41,7 +46,7 @@ class ViewController: UIViewController,OTResizableViewDelegate {
         } else {
             resizableView.keepAspectEnabled = false
             resizableView.minimumWidth = 100
-            resizableView.minimumHeight = 100
+            resizableView.minimumHeight = 0
         }
     }
     
