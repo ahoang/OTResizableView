@@ -99,7 +99,7 @@ import UIKit
     
     @objc open var gripTappableSize: CGFloat = 40
     
-    @objc public let gripPointDiameter: CGFloat = 10
+    @objc public var gripPointDiameter: CGFloat = 10
     
     @objc public private(set) var contentView = UITextView()
     
