@@ -27,7 +27,7 @@ public class OTGripPointView: UIView {
     public var gripPointStrokeColor: UIColor?
     public var gripPointFillColor: UIColor?
     
-    public var gripPointDiameter:CGFloat = 10
+    public var gripPointDiameter:CGFloat = 20
     public var gripPointStrokeWidth:CGFloat = 2
     
     init() {

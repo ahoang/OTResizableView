@@ -21,6 +21,7 @@ class ViewController: UIViewController,OTResizableViewDelegate {
         
         let yourView = UITextView(frame: CGRect(x: 70, y: 70, width: 200, height: 0))
         yourView.text = "HELLO THERE THIS IS A TEXTVIEW"
+        yourView.font = UIFont.systemFont(ofSize: 100)
         yourView.isEditable = false
         yourView.isSelectable = false
         yourView.isScrollEnabled = false

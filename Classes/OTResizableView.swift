@@ -99,7 +99,7 @@ import UIKit
     
     @objc open var gripTappableSize: CGFloat = 40
     
-    @objc public var gripPointDiameter: CGFloat = 10
+    @objc public var gripPointDiameter: CGFloat = 30
     
     @objc public private(set) var contentView = UITextView()
     
@@ -169,6 +169,7 @@ import UIKit
         gripPointView.viewStrokeColor = viewStrokeColor
         gripPointView.gripPointStrokeColor = gripPointStrokeColor
         gripPointView.gripPointFillColor = gripPointFillColor
+        gripPointView.gripPointDiameter = gripPointDiameter
         
         addSubview(gripPointView)
     }
@@ -482,11 +483,11 @@ import UIKit
             
             return .UpperRight
             
-        } else if touchStartPointInSelf.x < gripTappableSize && bounds.size.height - touchStartPointInSelf.y < gripTappableSize {
+        } else if touchStartPointInSelf.x < gripTappableSize && (bounds.size.height / 2) - touchStartPointInSelf.y < gripTappableSize {
             
             return .LowerLeft
             
-        } else if bounds.size.width - touchStartPointInSelf.x < gripTappableSize && bounds.size.height - touchStartPointInSelf.y < gripTappableSize {
+        } else if bounds.size.width - touchStartPointInSelf.x < gripTappableSize && (bounds.size.height / 2) - touchStartPointInSelf.y < gripTappableSize {
             
             return .LowerRight
             
