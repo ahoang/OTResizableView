@@ -113,7 +113,10 @@ import UIKit
     
     private var maxAspectFrame = CGRect.zero
     
-    private var gripPointView = OTGripPointView()
+    public var gripPointView = OTGripPointView()
+
+    public var viewStrokeLineWidth:CGFloat = 2
+    public var gripPointStrokeWidth:CGFloat = 2
     
     //MARK: - Initialize
     public init(contentView: UIView) {
@@ -161,7 +164,8 @@ import UIKit
         
         gripPointView = OTGripPointView(frame: bounds)
         gripPointView.isHidden = true
-        
+        gripPointView.viewStrokeLineWidth = viewStrokeLineWidth
+        gripPointView.gripPointStrokeWidth = gripPointStrokeWidth
         gripPointView.viewStrokeColor = viewStrokeColor
         gripPointView.gripPointStrokeColor = gripPointStrokeColor
         gripPointView.gripPointFillColor = gripPointFillColor

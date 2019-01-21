@@ -19,16 +19,16 @@
 
 import UIKit
 
-class OTGripPointView: UIView {
+public class OTGripPointView: UIView {
 
-    var viewStrokeColor: UIColor?
-    let viewStrokeLineWidth:CGFloat = 2
+    public var viewStrokeColor: UIColor?
+    public var viewStrokeLineWidth:CGFloat = 2
     
-    var gripPointStrokeColor: UIColor?
-    var gripPointFillColor: UIColor?
+    public var gripPointStrokeColor: UIColor?
+    public var gripPointFillColor: UIColor?
     
-    let gripPointDiameter:CGFloat = 10
-    let gripPointStrokeWidth:CGFloat = 2
+    public var gripPointDiameter:CGFloat = 10
+    public var gripPointStrokeWidth:CGFloat = 2
     
     init() {
         super.init(frame: CGRect.zero)
@@ -51,7 +51,7 @@ class OTGripPointView: UIView {
     }
     
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         let strokeRect = rect.insetBy(dx: gripPointDiameter, dy: gripPointDiameter)
         draw(stroke: strokeRect, lineWidth: viewStrokeLineWidth, color: viewStrokeColor!)
         
